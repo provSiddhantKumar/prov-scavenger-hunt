@@ -23,7 +23,7 @@ passcodeForm.addEventListener('submit', function(event) {
     .then(data => {
         if (data.status === "success") {
             inputArea.style.display = "none";
-            riddleArea.innerHTML = `<p>Correct! Proceed to the next location.</p>`; // You can customize this message
+            riddleArea.innerHTML = data.message; // You can customize this message
             riddleArea.style.display = "block";
         } else {
             passcode.style.animation = "shake 0.5s";

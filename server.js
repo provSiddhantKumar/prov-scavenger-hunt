@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,23 +20,29 @@ const scavengerHunts = [
         riddles: [
             { id: 'aX5j9mR', passcode: 'storm', riddleText: team1Riddle },
             // ... other riddles for Team Alpha
-        ],
+        ]
+    },
+    {
         teamId: 'team2',
         riddles: [
             { id: 'zQ8p7lK', passcode: 'roast', riddleText: team2Riddle },
             // ... other riddles for Team Alpha
-        ],
+        ]
+    },
+    {
         teamId: 'team3',
         riddles: [
             { id: 'ajJJ9mY', passcode: 'steam', riddleText: team3Riddle },
             // ... other riddles for Team Alpha
-        ],
+        ]
+    },
+    {
         teamId: 'team4',
         riddles: [
             { id: 'sfglsoe', passcode: 'clock', riddleText: team4Riddle },
             // ... other riddles for Team Alpha
         ]
-    },
+    }
     // ... other teams
 ];
 
@@ -80,7 +86,7 @@ app.post('/:teamId/riddle/:riddleId/validate', (req, res) => {
     }
 
     if (req.body.passcode === riddleData.passcode) {
-        res.json({ status: "success" });
+        res.json({ status: "success" , message: riddleData.riddleText });
     } else {
         res.json({ status: "error", message: "Incorrect passcode!" });
     }
